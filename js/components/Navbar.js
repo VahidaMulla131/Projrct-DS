@@ -100,7 +100,7 @@ export function renderNavbar(activePath = '/') {
         <!-- Brand & MBU Logo Slot on the LEFT -->
         <a href="/" class="brand-section" data-nav-link data-path="/" title="Data Science Subject Digital Library • Mohan Babu University">
           <div class="mbu-logo-container" id="mbu-logo-slot" aria-label="Mohan Babu University Crest Logo">
-            <img src="/public/assets/mbu-logo.png" alt="Mohan Babu University Logo" class="mbu-header-logo" loading="eager">
+            <img src="public/assets/mbu-logo.png" alt="Mohan Babu University Logo" class="mbu-header-logo" loading="eager">
           </div>
           <div class="brand-text">
             <div class="brand-title-lead">DATA SCIENCE</div>

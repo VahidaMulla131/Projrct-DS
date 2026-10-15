@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>DATA SCIENCE SUBJECT DIGITAL LIBRARY</title>
+  <script>
+    // Single Page Apps for GitHub Pages
+    // MIT License
+    // https://github.com/rafgraph/spa-github-pages
+    // Converts the 404 path into a query parameter on the base path, then redirects to index.html
+    var pathSegmentsToKeep = 1;
+
+    var l = window.location;
+    l.replace(
+      l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
+      l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
+      l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
+      (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
+      l.hash
+    );
+  </script>
+</head>
+<body>
+  <div style="font-family: sans-serif; text-align: center; padding: 50px; color: #0f172a;">
+    <h2>Loading Data Science Digital Library...</h2>
+    <p>If you are not redirected automatically, <a href="./">click here to go to Home</a>.</p>
+  </div>
+</body>
+</html>

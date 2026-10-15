@@ -13,7 +13,7 @@ export const studentData = {
   section: "2",
   subject: "DATA SCIENCE",
   faculty: "BOSUBABU AST PROFESOR",
-  photoUrl: "/public/assets/profile-photo.jpg",
+  photoUrl: "public/assets/profile-photo.jpg",
 
   // Social Profile Handles & External Links
   socials: {
@@ -25,6 +25,6 @@ export const studentData = {
   // Curriculum Vitae (CV) Asset
   cv: {
     title: "Curriculum Vitae — Mulla Vahida",
-    pdfUrl: "/public/assets/cv.pdf"
+    pdfUrl: "public/assets/cv.pdf"
   }
 };

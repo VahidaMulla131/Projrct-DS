@@ -23,7 +23,7 @@ export function renderFooter() {
           <!-- Col 1: Institutional Portal Identity -->
           <div class="footer-col footer-col-brand">
             <div class="footer-brand-header">
-              <img src="/public/assets/mbu-logo.png" alt="Mohan Babu University Logo" class="footer-univ-logo">
+              <img src="public/assets/mbu-logo.png" alt="Mohan Babu University Logo" class="footer-univ-logo">
               <div class="footer-brand-titles">
                 <span class="footer-brand-univ">MOHAN BABU UNIVERSITY</span>
                 <span class="footer-brand-portal">DATA SCIENCE DIGITAL LIBRARY</span>

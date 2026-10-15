@@ -79,6 +79,13 @@ const STATIC_ROUTES = {
   }
 };
 
+function getAppBase() {
+  if (window.location.hostname.indexOf('github.io') !== -1 || window.location.pathname.indexOf('/Projrct-DS') === 0) {
+    return '/Projrct-DS';
+  }
+  return '';
+}
+
 class Router {
   constructor() {
     this.currentPath = '/';
@@ -100,8 +107,15 @@ class Router {
       const link = event.target.closest('a[data-nav-link], a[data-path]');
       if (!link) return;
 
-      const path = link.getAttribute('data-path') || link.getAttribute('href');
-      if (path && (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/modules/') || path.startsWith('/'))) {
+      let path = link.getAttribute('data-path') || link.getAttribute('href');
+      if (!path) return;
+
+      const appBase = getAppBase();
+      if (appBase && path.startsWith(appBase)) {
+        path = path.slice(appBase.length) || '/';
+      }
+
+      if (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/modules/') || path.startsWith('/')) {
         event.preventDefault();
         this.navigate(path);
       }
@@ -113,7 +127,12 @@ class Router {
     if (window.location.hash && window.location.hash.startsWith('#/')) {
       return window.location.hash.slice(1);
     }
-    const pathname = window.location.pathname;
+    const appBase = getAppBase();
+    let pathname = window.location.pathname;
+
+    if (appBase && pathname.startsWith(appBase)) {
+      pathname = pathname.slice(appBase.length) || '/';
+    }
 
     // Direct match
     if (STATIC_ROUTES[pathname] || pathname.startsWith('/experiments/') || pathname.startsWith('/modules/')) {
@@ -184,10 +203,12 @@ class Router {
   navigate(path, pushToHistory = true) {
     const route = this.matchRoute(path);
     const targetPath = (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/modules/')) ? path : '/';
+    const appBase = getAppBase();
+    const fullHistoryPath = appBase ? (targetPath === '/' ? `${appBase}/` : `${appBase}${targetPath}`) : targetPath;
 
-    if (pushToHistory && window.location.pathname !== targetPath) {
+    if (pushToHistory && window.location.pathname !== fullHistoryPath) {
       try {
-        window.history.pushState({ path: targetPath }, '', targetPath);
+        window.history.pushState({ path: targetPath }, '', fullHistoryPath);
       } catch (e) {
         window.location.hash = `#${targetPath}`;
       }
