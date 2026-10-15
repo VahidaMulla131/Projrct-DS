@@ -11,7 +11,7 @@ import sys
 PORT = 3000
 DIRECTORY = os.path.dirname(os.path.abspath(__file__))
 
-KNOWN_SPA_ROUTES = ["/modules", "/experiments", "/tools", "/about"]
+KNOWN_SPA_ROUTES = ["/modules", "/experiments", "/tools", "/about", "/resources", "/projects"]
 
 class SPARequestHandler(http.server.SimpleHTTPRequestHandler):
     def __init__(self, *args, **kwargs):
@@ -30,12 +30,23 @@ class SPARequestHandler(http.server.SimpleHTTPRequestHandler):
             asset_subpath = path.split("assets/")[1]
             self.path = "/public/assets/" + asset_subpath
             return super().do_GET()
+        elif "public/study-materials/" in path:
+            asset_subpath = path.split("public/study-materials/")[1]
+            self.path = "/public/study-materials/" + asset_subpath
+            return super().do_GET()
+        elif "study-materials/" in path:
+            asset_subpath = path.split("study-materials/")[1]
+            self.path = "/public/study-materials/" + asset_subpath
+            return super().do_GET()
         
         # Check if the requested path corresponds to an existing file
         requested_file = os.path.join(DIRECTORY, path.lstrip("/"))
         
-        # If it's a known client-side route, starts with /experiments, or doesn't exist and has no extension, serve index.html
-        if path in KNOWN_SPA_ROUTES or path.startswith("/experiments") or (not os.path.exists(requested_file) and "." not in os.path.basename(path)):
+        # If it's a known client-side route, starts with /experiments or /modules, or doesn't exist and has no extension, serve index.html
+        if (path in KNOWN_SPA_ROUTES or 
+            path.startswith("/experiments") or 
+            path.startswith("/modules") or 
+            (not os.path.exists(requested_file) and "." not in os.path.basename(path))):
             self.path = "/index.html"
             
         return super().do_GET()

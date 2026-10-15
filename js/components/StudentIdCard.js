@@ -17,7 +17,7 @@ export function renderStudentIdCard(data = studentData) {
       <!-- ID Card Institutional Header -->
       <div class="id-card-top-bar">
         <div class="id-univ-header-left">
-          <img src="/public/assets/mbu-logo.png" alt="Mohan Babu University Logo" class="id-card-mbu-crest">
+          <img src="/public/assets/logo.jpeg" alt="Mohan Babu University Logo" class="id-card-mbu-crest">
           <div class="id-univ-info">
             <span class="id-univ-title">MOHAN BABU UNIVERSITY</span>
             <span class="id-card-subtitle">OFFICIAL STUDENT DIGITAL IDENTITY</span>

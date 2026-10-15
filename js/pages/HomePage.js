@@ -215,11 +215,11 @@ export function renderHomePage() {
               <div class="portal-card-icon-wrap icon-blue">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
               </div>
-              <span class="badge badge-academic">5 Modules</span>
+              <span class="badge badge-academic">5 Modules • 45 Periods</span>
             </div>
             <h3 class="portal-card-title">Course Modules</h3>
             <p class="portal-card-desc">
-              Explore the five foundational academic modules covering data science principles, data preparation, modeling, and analytical methodologies.
+              Explore the five foundational academic modules covering data science principles, data extraction, visualization, statistical thinking, and time series predictive modeling.
             </p>
             <div class="portal-card-action">
               <a href="/modules" class="btn btn-outline btn-sm portal-card-btn" data-nav-link data-path="/modules" aria-label="Explore course modules">
@@ -249,7 +249,47 @@ export function renderHomePage() {
             </div>
           </article>
 
-          <!-- Card 3: Tools -->
+          <!-- Card 3: Resources -->
+          <article class="card portal-nav-card" id="home-card-resources">
+            <div class="portal-card-top">
+              <div class="portal-card-icon-wrap icon-blue">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+              </div>
+              <span class="badge badge-academic">Learning Resources</span>
+            </div>
+            <h3 class="portal-card-title">Learning Resources</h3>
+            <p class="portal-card-desc">
+              Explore curated official documentation, interactive Python tutorials, benchmark datasets, and algorithm practice platforms.
+            </p>
+            <div class="portal-card-action">
+              <a href="/resources" class="btn btn-outline btn-sm portal-card-btn" data-nav-link data-path="/resources" aria-label="Explore learning resources">
+                <span>Explore Resources</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 4: Projects -->
+          <article class="card portal-nav-card" id="home-card-projects">
+            <div class="portal-card-top">
+              <div class="portal-card-icon-wrap icon-indigo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              </div>
+              <span class="badge badge-accent-blue">Practical Portfolio</span>
+            </div>
+            <h3 class="portal-card-title">My Projects</h3>
+            <p class="portal-card-desc">
+              Practical Data Science projects showcase featuring datasets, analytical methodology, model evaluations, and GitHub source repositories.
+            </p>
+            <div class="portal-card-action">
+              <a href="/projects" class="btn btn-outline btn-sm portal-card-btn" data-nav-link data-path="/projects" aria-label="Explore practical projects">
+                <span>View Projects</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Card 5: Tools -->
           <article class="card portal-nav-card" id="home-card-tools">
             <div class="portal-card-top">
               <div class="portal-card-icon-wrap icon-cyan">
@@ -269,7 +309,7 @@ export function renderHomePage() {
             </div>
           </article>
 
-          <!-- Card 4: About Me -->
+          <!-- Card 6: About Me -->
           <article class="card portal-nav-card" id="home-card-about">
             <div class="portal-card-top">
               <div class="portal-card-icon-wrap icon-slate">

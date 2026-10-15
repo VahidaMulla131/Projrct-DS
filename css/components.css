@@ -209,7 +209,55 @@
   margin-left: 8px;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
+}
+
+/* Student Navigation Circular Avatar */
+.nav-avatar-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: var(--color-brand-blue-light);
+  border: 1.5px solid var(--color-brand-blue-border);
+  flex-shrink: 0;
+  vertical-align: middle;
+}
+
+.nav-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+.nav-avatar-fallback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  color: var(--color-brand-blue);
+}
+
+.avatar-hidden {
+  display: none !important;
+}
+
+.ribbon-avatar-wrap {
+  width: 16px;
+  height: 16px;
+  border-width: 1px;
+}
+
+.mobile-avatar-wrap {
+  width: 24px;
+  height: 24px;
 }
 
 /* Mobile Hamburger Menu */
@@ -411,6 +459,18 @@
   border: 1px solid #fde68a;
 }
 
+.badge-accent-blue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+  border: 1px solid #bfdbfe;
+}
+
+.badge-draft {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+}
+
 /* --------------------------------------------------------------------------
    4. DIGITAL STUDENT ID CARD COMPONENT
    -------------------------------------------------------------------------- */
@@ -437,51 +497,95 @@
 .id-card-top-bar {
   background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
   color: #ffffff;
-  padding: 14px 18px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  box-sizing: border-box;
 }
 
 .id-univ-header-left {
   display: flex;
   align-items: center;
   gap: 12px;
+  min-width: 0;
+  flex: 1;
 }
 
 .id-card-mbu-crest {
-  height: 38px;
-  width: auto;
+  height: 44px;
+  width: 50px;
   object-fit: contain;
   background-color: #ffffff;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 2px 4px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-sizing: border-box;
 }
 
 .id-univ-info {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+  gap: 2px;
 }
 
 .id-univ-title {
   font-size: 0.8125rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   color: #ffffff;
-  line-height: 1.2;
+  line-height: 1.25;
+  white-space: nowrap;
 }
 
 .id-card-subtitle {
-  font-size: 0.65rem;
+  font-size: 0.625rem;
   font-weight: 700;
   color: #93c5fd;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 .id-chip-emblem {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 480px) {
+  .id-card-top-bar {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+  .id-univ-header-left {
+    gap: 8px;
+  }
+  .id-card-mbu-crest {
+    height: 38px;
+    width: 44px;
+    padding: 2px 3px;
+  }
+  .id-univ-title {
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    white-space: normal;
+  }
+  .id-card-subtitle {
+    font-size: 0.54rem;
+    letter-spacing: 0.03em;
+    white-space: normal;
+  }
+  .id-chip-emblem svg {
+    width: 28px;
+    height: 22px;
+  }
 }
 
 .id-gold-divider {

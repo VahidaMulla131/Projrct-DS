@@ -45,7 +45,8 @@ export function renderFooter() {
               <li><a href="/" data-nav-link data-path="/">Home Overview</a></li>
               <li><a href="/modules" data-nav-link data-path="/modules">Course Modules (CHO)</a></li>
               <li><a href="/experiments" data-nav-link data-path="/experiments">Laboratory Experiments</a></li>
-              <li><a href="/experiments/all" data-nav-link data-path="/experiments/all">All Experiments Directory</a></li>
+              <li><a href="/resources" data-nav-link data-path="/resources">Learning Resources</a></li>
+              <li><a href="/projects" data-nav-link data-path="/projects">My Projects (Portfolio)</a></li>
               <li><a href="/tools" data-nav-link data-path="/tools">Computing Tools & Frameworks</a></li>
               <li><a href="/about" data-nav-link data-path="/about">About Me (CV & Profile)</a></li>
             </ul>

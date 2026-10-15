@@ -19,10 +19,14 @@ import { renderFooter } from './components/Footer.js';
 import { renderHomePage } from './pages/HomePage.js';
 import { renderAboutPage } from './pages/AboutPage.js';
 import { renderModulesPage, initModulesPageEvents } from './pages/ModulesPage.js';
+import { renderModuleDetailPage, initModuleDetailPageEvents } from './pages/ModuleDetailPage.js';
+import { modulesData } from './data/modulesData.js';
 import { renderExperimentsPage, initExperimentsPageEvents } from './pages/ExperimentsPage.js';
 import { renderExperimentsAllPage } from './pages/ExperimentsAllPage.js';
 import { renderIndividualExperimentPage, initIndividualExperimentPageEvents } from './pages/IndividualExperimentPage.js';
 import { renderToolsPage } from './pages/ToolsPage.js';
+import { renderResourcesPage, initResourcesPageEvents } from './pages/ResourcesPage.js';
+import { renderProjectsPage, initProjectsPageEvents } from './pages/ProjectsPage.js';
 
 const STATIC_ROUTES = {
   '/': {
@@ -48,6 +52,18 @@ const STATIC_ROUTES = {
     activeNav: '/experiments',
     render: renderExperimentsAllPage,
     init: () => {}
+  },
+  '/resources': {
+    title: 'Learning Resources | Data Science Subject Digital Library - MBU',
+    activeNav: '/resources',
+    render: renderResourcesPage,
+    init: initResourcesPageEvents
+  },
+  '/projects': {
+    title: 'My Projects | Data Science Subject Digital Library - MBU',
+    activeNav: '/projects',
+    render: renderProjectsPage,
+    init: initProjectsPageEvents
   },
   '/tools': {
     title: 'Tools | Data Science Subject Digital Library - MBU',
@@ -85,7 +101,7 @@ class Router {
       if (!link) return;
 
       const path = link.getAttribute('data-path') || link.getAttribute('href');
-      if (path && (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/'))) {
+      if (path && (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/modules/') || path.startsWith('/'))) {
         event.preventDefault();
         this.navigate(path);
       }
@@ -100,7 +116,7 @@ class Router {
     const pathname = window.location.pathname;
 
     // Direct match
-    if (STATIC_ROUTES[pathname] || pathname.startsWith('/experiments/')) {
+    if (STATIC_ROUTES[pathname] || pathname.startsWith('/experiments/') || pathname.startsWith('/modules/')) {
       return pathname;
     }
 
@@ -119,7 +135,22 @@ class Router {
       return STATIC_ROUTES[path];
     }
 
-    // 2. Dynamic route match: /experiments/:id/:subId (Dedicated sub-experiment detail page)
+    // 2. Dynamic route match: /modules/:id
+    const modMatch = path.match(/^\/modules\/([^/]+)$/);
+    if (modMatch) {
+      const id = modMatch[1];
+      const module = modulesData.find(m => m.id === id || m.id === `module-${id}` || String(m.moduleNumber) === id);
+      if (module) {
+        return {
+          title: `${module.title} | Data Science Subject Digital Library - MBU`,
+          activeNav: '/modules',
+          render: () => renderModuleDetailPage(module),
+          init: () => initModuleDetailPageEvents(module)
+        };
+      }
+    }
+
+    // 3. Dynamic route match: /experiments/:id/:subId (Dedicated sub-experiment detail page)
     const subExpMatch = path.match(/^\/experiments\/([^/]+)\/([^/]+)$/);
     if (subExpMatch) {
       const id = subExpMatch[1];
@@ -132,7 +163,7 @@ class Router {
       };
     }
 
-    // 3. Dynamic route match: /experiments/:id (Experiment Hub or single experiment)
+    // 4. Dynamic route match: /experiments/:id (Experiment Hub or single experiment)
     const expMatch = path.match(/^\/experiments\/([^/]+)$/);
     if (expMatch) {
       const id = expMatch[1];
@@ -146,13 +177,13 @@ class Router {
       }
     }
 
-    // 4. Fallback to Home
+    // 5. Fallback to Home
     return STATIC_ROUTES['/'];
   }
 
   navigate(path, pushToHistory = true) {
     const route = this.matchRoute(path);
-    const targetPath = (STATIC_ROUTES[path] || path.startsWith('/experiments/')) ? path : '/';
+    const targetPath = (STATIC_ROUTES[path] || path.startsWith('/experiments/') || path.startsWith('/modules/')) ? path : '/';
 
     if (pushToHistory && window.location.pathname !== targetPath) {
       try {
